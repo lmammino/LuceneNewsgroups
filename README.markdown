@@ -20,7 +20,7 @@ As it is a command line software, you have to type every single command. Yeah, t
 
 The workflow
 ------------
-To use LuceneNewsgroups you should have a set of files that represents newsgroup posts. You can find some of them in the **data** folder. These files should be placed on a directory and can be even organized in subdirectories if needed. Each subdirectory is intended as a category.
+To use LuceneNewsgroups you should have a set of files that represents newsgroup posts. You can find some of them in the **data.zip** file. These files should be placed on a directory and can be even organized in subdirectories if needed. Each subdirectory is intended as a category.
 The default workflow follow these steps:
 
   1. Create the index for a set of posts placed inside a directory
@@ -47,16 +47,36 @@ Here's the complete list of available commands
 
 <table>
 	<tr>
-		<td><code>version</code></td><td>Shows informations about the version of the software</td>
+		<td style="width:30%">
+			<code>version</code>
+		</td>
+		<td>
+			Shows informations about the version of the software
+		</td>
 	</tr>
 	<tr>
-		<td><code>createIndex [&lt;folder&gt;]</code></td><td>Creates an index for all the files contained in the <strong>folder</strong> directory. If you don't specify a folder, it will use the current working directory.</td>
+		<td style="width:30%">
+			<code>createIndex [&lt;folder&gt;]</code>
+		</td>
+		<td>
+			Creates an index for all the files contained in the <strong>folder</strong> directory. If you don't specify a folder, it will use the current working directory.
+		</td>
 	</tr>
 	<tr>
-		<td><code>search &lt;query&gt;</code></td><td>Search within the index of the current dir for documents that match the given <strong>query</strong>.</td>
+		<td style="width:30%">
+			<code>search &lt;query&gt;</code>
+		</td>
+		<td>
+			Search within the index of the current dir for documents that match the given <strong>query</strong>.
+		</td>
 	</tr>
 	<tr>
- 		<td><code>open &lt;id&gt;</code></td><td>display the content of the document indexed with the given <strong>id</strong>.</td>
+ 		<td style="width:30%">
+			<code>open &lt;id&gt;</code>
+		</td>
+		<td>
+			display the content of the document indexed with the given <strong>id</strong>.
+		</td>
 	</tr>
 </table>
 
