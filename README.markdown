@@ -14,7 +14,7 @@ You should have java 1.5 or higher installed on your system.
 Installation
 ------------
 LuceneNewsgroup does not require you to perform any kind of setup. It's distributed as jar file (you can find it in the **dist** folder). You can copy the jar file wherever you want and just run it from the console by using the command `java -jar path/to/LuceneNewsgroups.jar`. Obviously you should replace the `path/to/` with the real path where you put the jar file.
-As it is a command line software, you have to type every single command. Yeah, this sounds really boooring! You can ease things a bit by creating an alias to shorten the ugly `java -jar path/to/LuceneNewsgroups.jar` command. On unix-based systems you can do this with the command `alias lns='java -jar path/to/LuceneNewsgroups.jar'. This way you created an alias called **lns** and now you can just type `lns` instead of `java -jar path/to/LuceneNewsgroups.jar`.<br/>
+As it is a command line software, you have to type every single command. Yeah, this sounds really boooring! You can ease things a bit by creating an alias to shorten the ugly `java -jar path/to/LuceneNewsgroups.jar` command. On unix-based systems you can do this with the command `alias lns='java -jar path/to/LuceneNewsgroups.jar'`. This way you created an alias called **lns** and now you can just type `lns` instead of `java -jar path/to/LuceneNewsgroups.jar`.<br/>
 ( Thanks to my great friend [saro](https://github.com/saro) for the hint ).
 
 
