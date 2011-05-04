@@ -86,6 +86,8 @@ public class OpenCommand extends Command
             } catch (Exception ex) {
                 Logger.getLogger(SearchCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            System.out.println("\n\n");
         }
         
 

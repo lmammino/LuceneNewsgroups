@@ -169,6 +169,7 @@ public class PostCrawler
         {
             for (File child : children)
             {
+
                 if (!child.isDirectory())
                     queue.add(relativePath + "/" + child.getName());
                 else

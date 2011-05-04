@@ -28,12 +28,12 @@ The default workflow follow these steps:
   3. Open some of the matched files
 
 So generally you would write commands like these:
-<code>
-	cd path/to/my/posts/directory
-	lns createIndex
-	lns search god OR hell
-	lns open 21580
-</code>
+
+    cd path/to/my/posts/directory
+    lns createIndex
+    lns search god OR hell
+    lns open 21580
+
 
 (**N.B.** I'm supposing you've created an alias called **lns** as described above)
 

@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Queue;
 import lucenenewsgroups.AppInfo;
 import lucenenewsgroups.Command;
+import lucenenewsgroups.FileUtils;
 import lucenenewsgroups.Post;
 import lucenenewsgroups.crawler.DiscoveredPost;
 import lucenenewsgroups.crawler.PostCrawler;
@@ -40,15 +41,25 @@ public class CreateIndexCommand extends Command {
     @Override
     public void execute()
     {
-        System.out.println("\nCreating index...\n\n");
-
+        
         try
         {
+            File indexFile = new File(this.directory + "/" + AppInfo.indexFile);
+            System.out.println("\nCreating index for '" + indexFile.getParentFile().getCanonicalPath() + "'");
+            if (indexFile.exists())
+            {
+                System.out.println("This folder has been already indexed. It will be updated.");
+                if (FileUtils.deleteDirectory(indexFile) == false)
+                {
+                    System.out.println("\nWARNING: Cannot delete the index, it may not update properly...\n");
+                }
+            }
+
             PostCrawler crawler = new PostCrawler(this.directory);
             Queue<String> posts = crawler.discoverUsingQueue();
             PostParser parser = new PostParser();
 
-            FSDirectory dir = FSDirectory.open(new File(this.directory + "/" + AppInfo.indexFile));
+            FSDirectory dir = FSDirectory.open(indexFile);
             IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_31, new StandardAnalyzer(Version.LUCENE_31));
             IndexWriter writer = new IndexWriter(dir, config);
 
@@ -58,6 +69,9 @@ public class CreateIndexCommand extends Command {
             DiscoveredPost discoveredPost = null;
             Post post = null;
             Document document = null;
+
+            System.out.println();
+
             while( (postFile = posts.poll() ) != null )
             {
                 discoveredPost = new DiscoveredPost(new File(crawler.getDirectory() + postFile));
@@ -79,7 +93,7 @@ public class CreateIndexCommand extends Command {
             writer.optimize();
             writer.close();
 
-            System.out.println();
+            System.out.println("\n\n");
         }
         catch(Exception e)
         {

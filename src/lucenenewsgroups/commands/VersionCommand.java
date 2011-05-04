@@ -14,7 +14,7 @@ public class VersionCommand extends Command {
     public void execute()
     {
         System.out.println(AppInfo.name + "  " + AppInfo.version +
-                            " by Luciano Mammino <lmammino[at]oryzone[dot]com>");
+                            " by Luciano Mammino <lmammino[at]oryzone[dot]com>\n\n");
     }
 
 }
