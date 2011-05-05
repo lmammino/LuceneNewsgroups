@@ -1,6 +1,7 @@
 package lucenenewsgroups.commands;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lucenenewsgroups.AppInfo;
@@ -59,12 +60,13 @@ public class SearchCommand extends Command {
                 TopScoreDocCollector collector = TopScoreDocCollector.create(hitsPerPage, true);
                 searcher.search(q, collector);
                 ScoreDoc[] hits = collector.topDocs().scoreDocs;
+                DecimalFormat df = new DecimalFormat( "#,###,###,##0.000" );
 
-                System.out.println("Found " + hits.length + " hits.");
+                System.out.println("\nFound " + hits.length + " hits.");
                 for(int i=0;i<hits.length;++i) {
                     int docId = hits[i].doc;
                     Document d = searcher.doc(docId);
-                    System.out.println((i + 1) + ". " + "(" + d.get("id") + ") " + d.get("subject") );
+                    System.out.println("" + d.get("id") + "\t " + "Rel. " + df.format(hits[i].score) + "\t" + d.get("subject")  );
                 }
 
             } catch (Exception ex) {

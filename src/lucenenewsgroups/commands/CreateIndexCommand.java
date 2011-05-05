@@ -9,6 +9,7 @@ import lucenenewsgroups.Post;
 import lucenenewsgroups.crawler.DiscoveredPost;
 import lucenenewsgroups.crawler.PostCrawler;
 import lucenenewsgroups.parser.PostParser;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
@@ -49,10 +50,6 @@ public class CreateIndexCommand extends Command {
             if (indexFile.exists())
             {
                 System.out.println("This folder has been already indexed. It will be updated.");
-                if (FileUtils.deleteDirectory(indexFile) == false)
-                {
-                    System.out.println("\nWARNING: Cannot delete the index, it may not update properly...\n");
-                }
             }
 
             PostCrawler crawler = new PostCrawler(this.directory);
@@ -60,7 +57,9 @@ public class CreateIndexCommand extends Command {
             PostParser parser = new PostParser();
 
             FSDirectory dir = FSDirectory.open(indexFile);
-            IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_31, new StandardAnalyzer(Version.LUCENE_31));
+            Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_31);
+            IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_31, analyzer);
+            config.setOpenMode(IndexWriterConfig.OpenMode.CREATE);
             IndexWriter writer = new IndexWriter(dir, config);
 
             int size = posts.size();

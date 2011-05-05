@@ -38,7 +38,7 @@ So generally you would write commands like these:
 (**N.B.** I'm supposing you've created an alias called **lns** as described above)
 
 
-![Usage demo](http://img705.imageshack.us/img705/412/lns.png "demo")
+![Usage demo](http://img696.imageshack.us/img696/4066/schermata20110505a23073.png "demo")
 
 
 Commands
